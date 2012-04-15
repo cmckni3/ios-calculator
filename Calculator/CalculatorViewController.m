@@ -55,8 +55,11 @@
     }
     else
     {
-        self.display.text = digit;
-        self.userIsInTheMiddleOfEnteringANumber = YES;
+        if (![digit isEqualToString:@"0"])
+        {
+            self.display.text = digit;
+            self.userIsInTheMiddleOfEnteringANumber = YES;
+        }
     }
 }
 
