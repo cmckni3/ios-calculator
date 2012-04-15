@@ -80,7 +80,21 @@
         result = 4*atan(1.0);
     else
     if ([operation isEqualToString:@"e"])
-        result = 2.71;
+    {
+        double sum = 0;
+        for (int i = 0; i < 13; i++)
+        {
+            int factorial = i;
+            int factorialResult = 1;
+            while (factorial != 0)
+            {
+                factorialResult *= factorial;
+                factorial = factorial - 1;
+            }
+            sum += (double)1/factorialResult;
+        }
+        result = sum;
+    }
     else
     if ([operation isEqualToString:@"+/-"])
     {
