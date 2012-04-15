@@ -81,6 +81,13 @@
     else
     if ([operation isEqualToString:@"e"])
         result = 2.71;
+    else
+    if ([operation isEqualToString:@"+/-"])
+    {
+        double operand = [self popOperand];
+        if (operand)
+            result = -1*operand;
+    }
     [self pushOperand:result];
     return result;
 }
