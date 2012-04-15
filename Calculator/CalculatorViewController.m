@@ -2,8 +2,8 @@
 //  CalculatorViewController.m
 //  Calculator
 //
-//  Created by Chris on 3/30/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Chris McKnight on 3/30/12.
+//  Copyright (c) 2012 Chris McKnight. All rights reserved.
 //
 
 #import "CalculatorViewController.h"
@@ -101,13 +101,13 @@
             [self enterPressed];
         double result = [self.brain performOperation:operation];
         self.display.text = [NSString stringWithFormat:@"%g", result];
-        self.stackDisplay.text = [self.stackDisplay.text stringByAppendingFormat:@"%@ ", operation];
+        self.stackDisplay.text = [[[self.stackDisplay.text stringByReplacingOccurrencesOfString:@"=" withString:@""] stringByAppendingFormat:@"%@ ", operation] stringByAppendingString:@"="];
     }
 }
 
 - (IBAction)enterPressed {
     [self.brain pushOperand:[self.display.text doubleValue]];
-    self.stackDisplay.text = [self.stackDisplay.text stringByAppendingFormat:@"%g ", [self.display.text doubleValue]];
+    self.stackDisplay.text = [[self.stackDisplay.text stringByReplacingOccurrencesOfString:@"=" withString:@""] stringByAppendingFormat:@"%g ", [self.display.text doubleValue]];
     self.userIsInTheMiddleOfEnteringANumber = NO;
     self.userAlreadyPressedDot = NO;
 }

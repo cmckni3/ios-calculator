@@ -2,8 +2,8 @@
 //  CalculatorBrain.h
 //  Calculator
 //
-//  Created by Chris on 4/9/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Chris McKnight on 4/9/12.
+//  Copyright (c) 2012 Chris McKnight. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
