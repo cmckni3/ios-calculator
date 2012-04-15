@@ -17,6 +17,7 @@
 
 @implementation CalculatorViewController
 @synthesize display = _display;
+@synthesize stackDisplay = _stackDisplay;
 @synthesize userIsInTheMiddleOfEnteringANumber = _userIsInTheMiddleOfEnteringANumber;
 @synthesize userAlreadyPressedDot = _userAlreadyPressedDot;
 @synthesize brain = _brain;

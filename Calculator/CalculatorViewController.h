@@ -11,10 +11,11 @@
 @interface CalculatorViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *display;
+@property (weak, nonatomic) IBOutlet UILabel *stackDisplay;
 
 - (IBAction)digitPressed:(UIButton *)sender;
 - (IBAction)dotPressed:(UIButton *)sender;
-- (IBAction)backspacePressed:(UIButton *)sender;
+- (IBAction)backspacePressed;
 - (IBAction)operationPressed:(UIButton *)sender;
 - (IBAction)enterPressed;
 - (IBAction)clearPressed;
