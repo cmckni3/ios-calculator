@@ -90,11 +90,18 @@
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
-    if (self.userIsInTheMiddleOfEnteringANumber)
-        [self enterPressed];
     NSString *operation = [sender currentTitle];
-    double result = [self.brain performOperation:operation];
-    self.display.text = [NSString stringWithFormat:@"%g", result];
+    if ([operation isEqualToString:@"+/-"] && self.userIsInTheMiddleOfEnteringANumber)
+    {
+        self.display.text = [NSString stringWithFormat:@"%g", -1*[self.display.text doubleValue]];
+    }
+    else
+    {
+        if (self.userIsInTheMiddleOfEnteringANumber)
+            [self enterPressed];
+        double result = [self.brain performOperation:operation];
+        self.display.text = [NSString stringWithFormat:@"%g", result];
+    }
 }
 
 - (IBAction)enterPressed {
