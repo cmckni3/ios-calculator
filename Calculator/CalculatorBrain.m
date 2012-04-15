@@ -71,10 +71,18 @@
         result = tan([self popOperand]);
     else
     if ([operation isEqualToString:@"log"])
-        result = log10([self popOperand]);
+    {
+        double operand = [self popOperand];
+        if (operand >= 0)
+            result = log10(operand);
+    }
     else
     if ([operation isEqualToString:@"sqrt"])
-        result = sqrt([self popOperand]);
+    {
+        double operand = [self popOperand];
+        if (operand >= 0)
+            result = sqrt(operand);
+    }
     else
     if ([operation isEqualToString:@"π"])
         result = 4*atan(1.0);
