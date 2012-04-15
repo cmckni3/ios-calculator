@@ -101,17 +101,20 @@
             [self enterPressed];
         double result = [self.brain performOperation:operation];
         self.display.text = [NSString stringWithFormat:@"%g", result];
+        self.stackDisplay.text = [self.stackDisplay.text stringByAppendingFormat:@"%@ ", operation];
     }
 }
 
 - (IBAction)enterPressed {
     [self.brain pushOperand:[self.display.text doubleValue]];
+    self.stackDisplay.text = [self.stackDisplay.text stringByAppendingFormat:@"%g ", [self.display.text doubleValue]];
     self.userIsInTheMiddleOfEnteringANumber = NO;
     self.userAlreadyPressedDot = NO;
 }
 
 - (IBAction)clearPressed {
     self.display.text = [NSString stringWithFormat:@"%d", 0];
+    self.stackDisplay.text = [NSString stringWithFormat:@""];
     [self.brain clear];
     self.userIsInTheMiddleOfEnteringANumber = NO;
     self.userAlreadyPressedDot = NO;
