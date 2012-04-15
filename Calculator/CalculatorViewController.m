@@ -74,6 +74,20 @@
     }
 }
 
+- (IBAction)backspacePressed {
+    NSUInteger len = [self.display.text length];
+    NSString *lastDigit = [self.display.text substringFromIndex:len-1];
+    if (len > 1)
+        self.display.text = [self.display.text substringToIndex:len-1];
+    else
+    {
+        self.display.text = @"0";
+        self.userIsInTheMiddleOfEnteringANumber = NO;
+    }
+    if ([lastDigit isEqualToString:@"."])
+        self.userAlreadyPressedDot = NO;
+}
+
 - (IBAction)operationPressed:(UIButton *)sender {
     if (self.userIsInTheMiddleOfEnteringANumber)
         [self enterPressed];

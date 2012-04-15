@@ -334,7 +334,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="backspacePressed" destination="2" eventType="touchUpInside" id="zvk-Qt-Ukl"/>
+                                    <action selector="backspacePressed" destination="2" eventType="touchUpInside" id="2d3-Jl-Y9g"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a4P-88-Y7Z">
@@ -433,6 +433,7 @@
         <class className="CalculatorViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CalculatorViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backspacePressed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="clearPressed"/>
                 <relationship kind="action" name="digitPressed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="dotPressed:" candidateClass="UIButton"/>
