@@ -11,12 +11,14 @@
 
 @interface CalculatorViewController ()
 @property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
+@property (nonatomic) BOOL userAlreadyPressedDot;
 @property (nonatomic, strong) CalculatorBrain *brain;
 @end
 
 @implementation CalculatorViewController
 @synthesize display = _display;
 @synthesize userIsInTheMiddleOfEnteringANumber = _userIsInTheMiddleOfEnteringANumber;
+@synthesize userAlreadyPressedDot = _userAlreadyPressedDot;
 @synthesize brain = _brain;
 
 - (CalculatorBrain *)brain
@@ -63,6 +65,15 @@
     }
 }
 
+- (IBAction)dotPressed:(UIButton *)sender
+{
+    if (!self.userAlreadyPressedDot)
+    {
+        [self digitPressed:sender];
+        self.userAlreadyPressedDot = YES;
+    }
+}
+
 - (IBAction)operationPressed:(UIButton *)sender {
     if (self.userIsInTheMiddleOfEnteringANumber)
         [self enterPressed];
@@ -74,11 +85,13 @@
 - (IBAction)enterPressed {
     [self.brain pushOperand:[self.display.text doubleValue]];
     self.userIsInTheMiddleOfEnteringANumber = NO;
+    self.userAlreadyPressedDot = NO;
 }
 
 - (IBAction)clearPressed {
     self.display.text = [NSString stringWithFormat:@"%d", 0];
     [self.brain clear];
     self.userIsInTheMiddleOfEnteringANumber = NO;
+    self.userAlreadyPressedDot = NO;
 }
 @end
