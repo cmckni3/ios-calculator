@@ -54,10 +54,33 @@
     else
     if ([operation isEqualToString:@"*"])
         result = [self popOperand] * [self popOperand]; 
-    else {
+    else
+    if ([operation isEqualToString:@"/"])
+    {
         double divisor = [self popOperand];
         if (divisor) result = [self popOperand] / divisor;
     }
+    else
+    if ([operation isEqualToString:@"sin"])
+        result = sin([self popOperand]);
+    else
+    if ([operation isEqualToString:@"cos"])
+        result = cos([self popOperand]);
+    else
+    if ([operation isEqualToString:@"tan"])
+        result = tan([self popOperand]);
+    else
+    if ([operation isEqualToString:@"log"])
+        result = log10([self popOperand]);
+    else
+    if ([operation isEqualToString:@"sqrt"])
+        result = sqrt([self popOperand]);
+    else
+    if ([operation isEqualToString:@"π"])
+        result = 4*atan(1.0);
+    else
+    if ([operation isEqualToString:@"e"])
+        result = 2.71;
     [self pushOperand:result];
     return result;
 }
