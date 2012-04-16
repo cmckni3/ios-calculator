@@ -37,6 +37,7 @@
 - (void)viewDidUnload
 {
     [self setDisplay:nil];
+    [self setStackDisplay:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -91,9 +92,10 @@
 
 - (IBAction)operationPressed:(UIButton *)sender {
     NSString *operation = [sender currentTitle];
-    if ([operation isEqualToString:@"+/-"] && self.userIsInTheMiddleOfEnteringANumber)
+    if ([operation isEqualToString:@"+/-"])
     {
-        self.display.text = [NSString stringWithFormat:@"%g", -1*[self.display.text doubleValue]];
+        if (self.userIsInTheMiddleOfEnteringANumber)
+            self.display.text = [NSString stringWithFormat:@"%g", -1*[self.display.text doubleValue]];
     }
     else
     {
